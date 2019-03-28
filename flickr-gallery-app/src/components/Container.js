@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from './config';
 import Gallery from './Gallery';
+import Loader from './Loader'; 
 
 class Container extends Component {
 
@@ -34,10 +35,10 @@ class Container extends Component {
 
   render() {
     return (
-      <div>
+      <div className="photo-container">
         {
           (this.state.loading)
-          ? <p>Loading...</p>
+          ? <Loader />
           : <Gallery data={this.state.images} />
         }
       </div>
@@ -48,66 +49,3 @@ class Container extends Component {
 }
 
 export default Container;
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { Component } from 'react';
-//
-// import Gallery from './Gallery';
-//
-// class Container extends Component {
-//
-//   constructor() {
-//     super ();
-//     this.state = {
-//       images: [],
-//       loading: true
-//     }
-//   }
-//
-//   performSearch = (query = 'beksinski') => {
-//     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
-//     .then(response => {
-//       this.setState({
-//         images: response.data.photos.photo,
-//         loading: false
-//       });
-//     })
-//     .catch(error => {
-//       console.log('Error fetching and parsing data', error);
-//     })
-//   }
-//
-//
-//   handleSubmit = (e) => {
-//     e.preventDefault();
-//     e.currentTarget.reset();
-//   }
-//
-//   componentDidMount() {
-//     this.performSearch();
-//   }
-//
-//   render() {
-//     return (
-//       <div>
-//         {
-//           this.state.loading ?
-//           <p>Loading...</p> :
-//           <Gallery />
-//         }
-//       </div>
-//     );
-//   }
-// }
-//
-// export default Container;

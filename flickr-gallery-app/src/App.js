@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/Header';
@@ -8,6 +8,7 @@ import Beksinski from './components/Beksinski';
 import Magritte from './components/Magritte';
 import Kahlo from './components/Kahlo';
 import Search from './components/Search';
+import NotFound from './components/NotFound';
 
 class App extends Component {
 
@@ -22,12 +23,15 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <Route path="/" render={() => <Header />} />
-          <Route exact path="/" component={Initial} />
-          <Route path="/beksinski" render={() => <Beksinski searchTerm="beksinski" />} />
-          <Route path="/magritte" render={() => <Magritte searchTerm="magritte" />} />
-          <Route path="/kahlo" render={() => <Kahlo searchTerm="kahlo" />} />
-          <Route path="/search/:searchInput" render={(props) => <Search searchTerm={props.match.params.searchInput} />} />
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Initial} />
+            <Route path="/beksinski" render={() => <Beksinski searchTerm="beksinski" />} />
+            <Route path="/magritte" render={() => <Magritte searchTerm="magritte" />} />
+            <Route path="/kahlo" render={() => <Kahlo searchTerm="kahlo" />} />
+            <Route path="/search/:searchInput" render={(props) => <Search searchTerm={props.match.params.searchInput} />} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
