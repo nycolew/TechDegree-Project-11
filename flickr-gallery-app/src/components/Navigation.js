@@ -8,6 +8,7 @@ const Navigation = () => {
         <li><NavLink to="/beksinski">Beksinski</NavLink></li>
         <li><NavLink to="/magritte">Magritte</NavLink></li>
         <li><NavLink to="/kahlo">Kahlo</NavLink></li>
+        <li><NavLink to="/chihuly">Chihuly</NavLink></li>
       </ul>
     </nav>
   );

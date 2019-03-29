@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from './config';
 import Gallery from './Gallery';
-import Loader from './Loader'; 
+import Loader from './Loader';
 
 class Container extends Component {
 
@@ -16,6 +16,12 @@ class Container extends Component {
 
   componentDidMount() {
     this.runSearch(this.props.searchTerm);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.searchTerm !== this.props.searchTerm) {
+      this.runSearch(this.props.searchTerm); 
+    }
   }
 
   runSearch = (query) => {

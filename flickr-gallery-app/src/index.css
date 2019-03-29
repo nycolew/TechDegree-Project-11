@@ -128,7 +128,7 @@ input {
     height: 120px;
     animation: spin 2s linear infinite;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
   }
 
   @keyframes spin {
