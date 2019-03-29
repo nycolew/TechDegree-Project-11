@@ -1,10 +1,12 @@
 import React from 'react';
-import NotFound from './NotFound';
+import NoImages from './NoImages';
 import Image from './Image';
+
 
 const Gallery = (props) => {
   const results = props.data;
   let images;
+  let noImages;
 
   if (results.length > 0) {
     images = results.map(image => {
@@ -17,13 +19,16 @@ const Gallery = (props) => {
       return <Image url={url} key={id} alt={title} />
     });
   } else {
-    images = <NotFound />
+    noImages = <NoImages />
   }
 
   return (
-    <ul>
-      { images }
-    </ul>
+    <div>
+      <ul>
+        { images }
+      </ul>
+      { noImages }
+    </div>
   );
 };
 
