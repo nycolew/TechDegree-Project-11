@@ -6,6 +6,8 @@ class Form extends Component {
     searchEntry: ''
   }
 
+// update search text state
+
   updateSearchInput = (e) => {
     this.setState({
       searchEntry: e.target.value

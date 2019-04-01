@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from './config';
+
+// import app components
+
 import Gallery from './Gallery';
 import Loader from './Loader';
 
 class Container extends Component {
-
+// initialize state
   constructor(props) {
     super(props);
     this.state = {
@@ -14,15 +17,19 @@ class Container extends Component {
     }
   }
 
+// load images
   componentDidMount() {
     this.runSearch(this.props.searchTerm);
   }
 
+// load new images for new search
   componentDidUpdate(prevProps) {
     if (prevProps.searchTerm !== this.props.searchTerm) {
-      this.runSearch(this.props.searchTerm); 
+      this.runSearch(this.props.searchTerm);
     }
   }
+
+// fetch data
 
   runSearch = (query) => {
     axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)

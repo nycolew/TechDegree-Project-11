@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
+// import app components
 import Header from './components/Header';
 import Initial from './components/Initial';
 import Beksinski from './components/Beksinski';
 import Magritte from './components/Magritte';
 import Kahlo from './components/Kahlo';
-import Chihuly from './components/Chihuly'; 
+import Chihuly from './components/Chihuly';
 import Search from './components/Search';
 import NotFound from './components/NotFound';
 
 class App extends Component {
-
+  // Prevent page reload, clear input, set URL and push history on submit
   handleSubmit = (e, history, searchInput) => {
     e.preventDefault();
     e.currentTarget.reset();
